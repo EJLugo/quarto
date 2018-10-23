@@ -1,0 +1,31 @@
+*{
+  margin: 0
+}
+
+#main{
+  height: 100vh;
+}
+.board{
+  height: 600px;
+  width: 600px;
+  border-radius: 20px;
+  background-color: lightgrey;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  box-shadow: darkgrey;
+  margin: 100px;
+}
+
+.play{
+  border-radius: 100px;
+  background-color: darkgrey;
+  width: 120px;
+  height: 120px;
+}
+
+.pieces-to-choose{
+  height: 500px;
+  width: 200px;
+  background-color: lightblue;
+}
