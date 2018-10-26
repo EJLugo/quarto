@@ -20,12 +20,20 @@
 .play{
   border-radius: 100px;
   background-color: darkgrey;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
 }
 
-.pieces-to-choose{
-  height: 500px;
-  width: 200px;
-  background-color: lightblue;
+.piece {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
 }
+.piece.large { width: 100px; height: 100px; }
+.piece.small { width: 64px; height: 64px; }
+.piece.light { background: #D5B9B2; }
+.piece.dark { background: #3D2C2E; }
+.piece.round { border-radius: 100%; }
+.piece.square { border-radius: 2px; }
+.piece.flat { box-shadow: inset 0 0 0 1px #fff; }
+.piece.hollow { box-shadow: inset 0 0 0 10px #886F68; }
