@@ -1,8 +1,7 @@
 // const board = document.querySelector('.board');
-// const playPieces = document.querySelectorAll('.piece');
-// console.log(playPieces);
 const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => null))
 
+let theElem;
 //MAKE THE GAME BOARD
 
 function renderGameBoard(){
@@ -52,16 +51,25 @@ function makePiecesHTML() {
     pieceEl.id = `${piece.id}`;
     pieceEl.dataset.index = i;
     pieceEl.addEventListener("click", function(e) {
-      e = document.querySelectorAll('.piece')
-      console.log('You clicked me!');
-      function selectPiece(i){
-        if (selected === piece[i]) {
-          //deselect
-        } else {
-          //selected
-          selected === piece [i]
-        }
-      }
+      // take the object out of the array
+      // const thePieces = document.querySelectorAll('.piece')
+      // const main = document.getElementById('main');
+      theElem = this;
+      this.remove()
+
+
+
+
+      // e = document.querySelectorAll('.piece')
+      // console.log('You clicked me!');
+      // function selectPiece(i){
+      //   if (selected === piece[i]) {
+      //     //deselect
+      //   } else {
+      //     //selected
+      //     selected === piece [i]
+      //   }
+      // }
      });
     document.body.appendChild(pieceEl);
   }

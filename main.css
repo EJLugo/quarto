@@ -5,6 +5,14 @@
 #main{
   height: 100vh;
 }
+#title{
+  text-align: center;
+  font-family: 'Trochut';
+  color: blue;
+  text-transform: lowercase;
+  font-size: 90pt;
+  text-shadow: 15px;
+}
 .board{
   height: 600px;
   width: 600px;
@@ -29,6 +37,7 @@
   width: 64px;
   height: 64px;
 }
+
 .piece.large { width: 100px; height: 100px; }
 .piece.small { width: 64px; height: 64px; }
 .piece.light { background: #D5B9B2; }
