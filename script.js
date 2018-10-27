@@ -52,14 +52,18 @@ function makePiecesHTML() {
     pieceEl.dataset.index = i;
     pieceEl.addEventListener("click", function(e) {
       // take the object out of the array
-      // const thePieces = document.querySelectorAll('.piece')
+      // const thePieces = document.querySelectorAll('.piece');
+      const gameBoard = document.querySelectorAll('.board')[0];
+      gameBoard.appendChild(this);
       // const main = document.getElementById('main');
       theElem = this;
-      this.remove();
+      // this.remove();
+      this.style.display = 'none';
+      console.log(this);
      });
     document.body.appendChild(pieceEl);
   }
-}                                                         
+}
 
 let pieces = makePieces();
 makePiecesHTML();
