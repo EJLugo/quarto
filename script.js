@@ -2,8 +2,9 @@
 const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => null))
 
 let theElem;
-//MAKE THE GAME BOARD
+let playerPiece = []
 
+//MAKE THE GAME BOARD
 function renderGameBoard(){
   for (let i = 0; i < 16; i += 1){
     let gameBoard = document.createElement('div');
@@ -14,8 +15,7 @@ function renderGameBoard(){
 renderGameBoard();
 
 
-// MAKE THE PIECES USING THE HIGH-LOW DECK CARD LOGIC
-
+// MAKE THE PIECES
 function makePieces() {
   const size = ['large', 'small'];
   const color = ['light', 'dark'];
@@ -55,37 +55,11 @@ function makePiecesHTML() {
       // const thePieces = document.querySelectorAll('.piece')
       // const main = document.getElementById('main');
       theElem = this;
-      this.remove()
-
-
-
-
-      // e = document.querySelectorAll('.piece')
-      // console.log('You clicked me!');
-      // function selectPiece(i){
-      //   if (selected === piece[i]) {
-      //     //deselect
-      //   } else {
-      //     //selected
-      //     selected === piece [i]
-      //   }
-      // }
+      this.remove();
      });
     document.body.appendChild(pieceEl);
   }
-}
+}                                                         
 
 let pieces = makePieces();
 makePiecesHTML();
-
-function positionSelect(row, column) {
-  if (selected) {
-    //check if move is valid
-    //if so, do something
-    //if else, do nothing or return an error
-  } else {
-    //let user know a piece needs to be selected
-  }
-}
-
-//win condition
