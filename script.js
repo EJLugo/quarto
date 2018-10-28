@@ -52,13 +52,11 @@ function makePiecesHTML() {
     pieceEl.dataset.index = i;
     pieceEl.addEventListener("click", function(e) {
       // take the object out of the array
-      // const thePieces = document.querySelectorAll('.piece');
+      let index = pieceEl.dataset.index;
       const gameBoard = document.querySelectorAll('.board')[0];
       gameBoard.appendChild(this);
-      // const main = document.getElementById('main');
       theElem = this;
-      // this.remove();
-      this.style.display = 'none';
+      pieces.splice(index, 1);
       console.log(this);
      });
     document.body.appendChild(pieceEl);
