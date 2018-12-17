@@ -1,5 +1,26 @@
-// const board = document.querySelector('.board');
-const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => null))
+const board = document.querySelector('.board');
+// const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => null))
+const playBoard = [
+  null, null, null, null,
+  null, null, null, null,
+  null, null, null, null,
+  null, null, null, null
+];
+const winningQuarto = [ //there are only ten possible board combinations to get a winning Quarto
+  //vertical wins
+  [0, 4, 8, 12],
+  [1, 5, 9, 13],
+  [2, 6, 10, 14],
+  [3, 7, 11, 15],
+  //horizontal wins
+  [0, 1, 2, 3],
+  [4, 5, 6, 7],
+  [8, 9, 10, 11],
+  [12, 13, 14, 15],
+  //diagonal wins
+  [0, 5, 10, 15],
+  [3, 6, 9, 12]
+];
 
 let theElem;
 let playerPiece = []
@@ -8,8 +29,9 @@ let playerPiece = []
 function renderGameBoard(){
   for (let i = 0; i < 16; i += 1){
     let gameBoard = document.createElement('div');
-    // board.appendChild(gameBoard);
+    board.appendChild(gameBoard);
     gameBoard.setAttribute('class', 'play');
+    gameBoard.id = i;
   }
 }
 renderGameBoard();
@@ -52,15 +74,34 @@ function makePiecesHTML() {
     pieceEl.dataset.index = i;
     pieceEl.addEventListener("click", function(e) {
       // take the object out of the array
-      let index = pieceEl.dataset.index;
+      let index = pieceEl.dataset;
       const gameBoard = document.querySelectorAll('.board')[0];
-      gameBoard.appendChild(this);
-      theElem = this;
-      pieces.splice(index, 1);
-      console.log(this);
+      // document.querySelectorAll('.board')[0];
+      gameBoard.appendChild(this); //this is pushing the pieces to the board in the order they are clicked, but the board placement isnt controlled...grr.
+      // theElem = this;
+      // playerPiece.push(pieces.splice(index, 1));
+      // console.log(this);
+      selectPosition(e.target);
      });
     document.body.appendChild(pieceEl);
   }
+}
+// console.log(playerPiece);
+
+function selectPosition(x){
+  piece = x
+  board.querySelectorAll('.play').forEach(e =>{
+      e.addEventListener('click', function(e){
+      play = board.querySelectorAll('.play');
+      play.forEach( each => {
+        if(each.id === x.dataset.index){
+          e.target.appendChild(piece);
+          playBoard[e.target.id] = pieces[each.id]
+        }
+      });
+      // playBoard[e.target] = x;
+    });
+  });
 }
 
 let pieces = makePieces();
