@@ -97,6 +97,7 @@ function selectPosition(x){
         if(each.id === x.dataset.index){
           e.target.appendChild(piece);
           playBoard[e.target.id] = pieces[each.id]
+					console.log(playBoard);
         }
       });
       // playBoard[e.target] = x;
@@ -106,3 +107,50 @@ function selectPosition(x){
 
 let pieces = makePieces();
 makePiecesHTML();
+
+//win consition (test)
+const arr = [
+  {
+    foo: true,
+    bar: false,
+    baz: true
+  },
+  {
+    foo: true,
+    bar: false,
+    baz: true
+  },
+  {
+    foo: false,
+    bar: true,
+    baz: false
+  },
+]
+
+function loopCheckWin(combo) {
+  const totals = {
+    foo: {
+      true: 0,
+      false: 0
+    },
+    bar: {
+      true: 0,
+      false: 0
+    },
+    baz: {
+      true: 0,
+      false: 0
+    }
+  };
+  for (let i = 0; i < combo.length; i += 1) {
+    const cell = combo[i];
+    const cellProps = Object.keys(cell);
+    for (let j = 0; j < cellProps.length; j += 1) {
+      const prop = cellProps[j]
+      totals[prop][cell[prop]] += 1
+    }
+  }
+  return totals
+}
+
+console.log(loopCheckWin(arr));
