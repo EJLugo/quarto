@@ -28,3 +28,12 @@ quarto game
 ### WIN/ LOSE/ DRAW
 - A player wins when they match any four pieces in a line horizontally, vertically, or diagonally
 - A draw results when all 16 pieces have placed on the board and no player has matched four traits in a line
+
+
+##Why Quarto?
+
+- I discovered Quarto while working for the now non-existent game store Marbles: The Brain Store.
+- Combining the fun of Connect Four and the strategy of Chess, it quickly became one of my favorite games not only to recommend and sell, but to play.
+
+### Game in progress screenshot
+[]
