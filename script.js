@@ -1,12 +1,11 @@
 const board = document.querySelector('.board');
-// const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => {}))
 const playBoard = [
   {}, {}, {}, {},
   {}, {}, {}, {},
   {}, {}, {}, {},
   {}, {}, {}, {}
 ];
-const winningQuarto = [ //there are only ten possible board combinations to get a winning Quarto
+const winningQuarto = [
   //vertical wins
   [0, 4, 8, 12],
   [1, 5, 9, 13],
@@ -63,7 +62,6 @@ function makePieces() {
   }
   return pieces;
 }
-// console.log(makePieces());
 
 function makePiecesHTML() {
   for (let i = 0; i < pieces.length; i++) {
@@ -73,20 +71,14 @@ function makePiecesHTML() {
     pieceEl.id = `${piece.id}`;
     pieceEl.dataset.index = i;
     pieceEl.addEventListener("click", function(e) {
-      // take the object out of the array
       let index = pieceEl.dataset;
       const gameBoard = document.querySelectorAll('.board')[0];
-      // document.querySelectorAll('.board')[0];
-      gameBoard.appendChild(this); //this is pushing the pieces to the board in the order they are clicked, but the board placement isnt controlled...grr.
-      // theElem = this;
-      // playerPiece.push(pieces.splice(index, 1));
-      // console.log(this);
+      gameBoard.appendChild(this);
       selectPosition(e.target);
      });
     document.body.appendChild(pieceEl);
   }
 }
-// console.log(playerPiece);
 
 function selectPosition(x){
   piece = x
@@ -97,11 +89,9 @@ function selectPosition(x){
         if(each.id === x.dataset.index){
           e.target.appendChild(piece);
           playBoard[e.target.id] = pieces[each.id]
-					// console.log(playBoard);
 					somethingElse();
         }
       });
-      // playBoard[e.target] = x;
     });
   });
 }
@@ -122,7 +112,7 @@ function somethingElse() {
 	});
 }
 
-//win condition (test)
+//win condition
 function loopCheckWin(combo) {
   const totals = {
     size: {
@@ -148,7 +138,6 @@ function loopCheckWin(combo) {
     for (let j = 0; j < piecePropsArr.length - 1; j += 1) {
       const prop = piecePropsArr[j]
       totals[prop][piece[prop]] += 1
-			// console.log(totals[prop][piece[prop]])
 			if( totals[prop][piece[prop]] === 4 ){
 				return false;
 			}
@@ -156,6 +145,3 @@ function loopCheckWin(combo) {
   }
   return totals
 }
-
-
-// console.log(loopCheckWin(arr));
