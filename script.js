@@ -1,10 +1,10 @@
 const board = document.querySelector('.board');
-// const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => null))
+// const board = Array.from({length: 4}, ()=> Array.from({length: 4}, () => {}))
 const playBoard = [
-  null, null, null, null,
-  null, null, null, null,
-  null, null, null, null,
-  null, null, null, null
+  {}, {}, {}, {},
+  {}, {}, {}, {},
+  {}, {}, {}, {},
+  {}, {}, {}, {}
 ];
 const winningQuarto = [ //there are only ten possible board combinations to get a winning Quarto
   //vertical wins
@@ -90,14 +90,15 @@ function makePiecesHTML() {
 
 function selectPosition(x){
   piece = x
-  board.querySelectorAll('.play').forEach(e =>{
-      e.addEventListener('click', function(e){
+  board.querySelectorAll('.play').forEach(tile =>{
+      tile.addEventListener('click', function(e){
       play = board.querySelectorAll('.play');
       play.forEach( each => {
         if(each.id === x.dataset.index){
           e.target.appendChild(piece);
           playBoard[e.target.id] = pieces[each.id]
-					console.log(playBoard);
+					// console.log(playBoard);
+					somethingElse();
         }
       });
       // playBoard[e.target] = x;
@@ -108,49 +109,53 @@ function selectPosition(x){
 let pieces = makePieces();
 makePiecesHTML();
 
-//win consition (test)
-const arr = [
-  {
-    foo: true,
-    bar: false,
-    baz: true
-  },
-  {
-    foo: true,
-    bar: false,
-    baz: true
-  },
-  {
-    foo: false,
-    bar: true,
-    baz: false
-  },
-]
+function somethingElse() {
+	let combo = [];
+	winningQuarto.forEach(comboIndexArr => {
+		comboIndexArr.forEach(pieceIndex => {
+			combo.push(playBoard[pieceIndex]);
+		});
+			if (!loopCheckWin(combo)) {
+				window.alert("You Win!");
+			}
+			combo = [];
+	});
+}
 
+//win condition (test)
 function loopCheckWin(combo) {
   const totals = {
-    foo: {
-      true: 0,
-      false: 0
+    size: {
+      large: 0,
+      small: 0
     },
-    bar: {
-      true: 0,
-      false: 0
+  	color: {
+      light: 0,
+      dark: 0
     },
-    baz: {
-      true: 0,
-      false: 0
-    }
+    shape: {
+      round: 0,
+      square: 0
+    },
+		top: {
+			flat: 0,
+			hollow: 0
+		}
   };
   for (let i = 0; i < combo.length; i += 1) {
-    const cell = combo[i];
-    const cellProps = Object.keys(cell);
-    for (let j = 0; j < cellProps.length; j += 1) {
-      const prop = cellProps[j]
-      totals[prop][cell[prop]] += 1
+    const piece = combo[i];
+    const piecePropsArr = Object.keys(piece);
+    for (let j = 0; j < piecePropsArr.length - 1; j += 1) {
+      const prop = piecePropsArr[j]
+      totals[prop][piece[prop]] += 1
+			// console.log(totals[prop][piece[prop]])
+			if( totals[prop][piece[prop]] === 4 ){
+				return false;
+			}
     }
   }
   return totals
 }
 
-console.log(loopCheckWin(arr));
+
+// console.log(loopCheckWin(arr));
