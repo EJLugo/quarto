@@ -49,3 +49,7 @@
 .piece.square { border-radius: 2px; }
 .piece.flat { box-shadow: inset 0 0 0 1px #fff; }
 .piece.hollow { box-shadow: inset 0 0 0 10px #886F68; }
+
+.instructions-modal {
+  border: solid
+}
