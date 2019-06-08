@@ -2,11 +2,11 @@
   margin: 0
 }
 
-#main{
+#main {
   height: 100vh;
   display: flex;
 }
-#title{
+#title {
   text-align: center;
   font-family: 'Trochut';
   color: blue;
@@ -15,7 +15,7 @@
   text-shadow: 15px;
 }
 
-.board{
+.board {
   height: 600px;
   width: 600px;
   border-radius: 20px;
@@ -28,7 +28,7 @@
   justify-content: center;
 }
 
-.play{
+.play {
   border-radius: 100px;
   background-color: darkgrey;
   width: 140px;
